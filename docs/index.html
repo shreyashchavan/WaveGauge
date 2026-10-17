@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WaveGauge — Know where every megabit goes | Agilitiq Ltd</title>
+  
+  <meta name="description" content="WaveGauge is a sleek, lightweight real-time Wi-Fi speed and telemetry monitor for the Windows 11 and 10 taskbar. Developed by Agilitiq Ltd.">
+  <meta name="keywords" content="WaveGauge, Wi-Fi speed monitor, taskbar network speed, Windows 11 taskbar speed, internet speed meter, Agilitiq Ltd">
+  <meta name="author" content="Agilitiq Ltd">
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="WaveGauge — Know where every megabit goes">
+  <meta property="og:description" content="Sub-millisecond taskbar network telemetry. Zero focus stealing, zero CPU overhead, and standalone portable execution.">
+  <meta property="og:image" content="assets/app_icon_256.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/app_icon_256.png">
+
+  <!-- Google Fonts: Sora, IBM Plex Sans, IBM Plex Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Effects -->
+  <div class="ambient-glow glow-cyan"></div>
+  <div class="ambient-glow glow-amber"></div>
+
+  <!-- Sticky Minimalist Navigation -->
+  <header class="navbar-wrapper">
+    <nav class="navbar container">
+      <!-- Animated Brand Logo -->
+      <a href="#hero" class="brand-lockup anim-logo-wrap" aria-label="WaveGauge Home">
+        <div class="logo-mark anim-logo-star">
+          <!-- WaveGauge Wi-Fi SVG Mark (Cyan dot & middle arcs + Burst Amber outer arc) -->
+          <svg viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="wifi-svg">
+            <!-- Outer Arc in Burst Amber #FFB020 -->
+            <path d="M4 11C15 0.5 33 0.5 44 11" stroke="#FFB020" stroke-width="4.2" stroke-linecap="round"/>
+            <!-- Middle Arc 1 in Signal Cyan #22D3EE -->
+            <path d="M11 18C18.5 10.5 29.5 10.5 37 18" stroke="#22D3EE" stroke-width="4" stroke-linecap="round"/>
+            <!-- Middle Arc 2 in Signal Cyan #22D3EE -->
+            <path d="M18 25C21.5 21.5 26.5 21.5 30 25" stroke="#22D3EE" stroke-width="3.8" stroke-linecap="round"/>
+            <!-- Dot in Signal Cyan #22D3EE -->
+            <circle cx="24" cy="31" r="3.2" fill="#22D3EE"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-wave">Wave</span><span class="brand-gauge">Gauge</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="nav-links">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#telemetry" class="nav-link">Telemetry</a>
+        <a href="#impact" class="nav-link">Impact</a>
+        <a href="#architecture" class="nav-link">Architecture</a>
+        <a href="#about" class="nav-link">About</a>
+      </div>
+
+      <!-- Action Button -->
+      <div class="nav-actions">
+        <a href="downloads/WaveGauge.exe" download="WaveGauge.exe" class="btn btn-primary btn-sm">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.902-1.799"/>
+          </svg>
+          <span>Download v1.0.0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section container">
+      <!-- Section Framing Brackets (Primora style) -->
+      <div class="corner-bracket top-left"></div>
+      <div class="corner-bracket top-right"></div>
+      
+      <div class="hero-content">
+        <!-- Eyebrow Pill Badge -->
+        <div class="eyebrow-badge">
+          <span class="badge-dot"></span>
+          <span class="badge-text">WAVEGAUGE 1.0.0 • BY AGILITIQ LTD • WINDOWS 11 &amp; 10 NATIVE</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="hero-headline">
+          Know where every<br>
+          <span class="gradient-text">megabit goes.</span>
+        </h1>
+
+        <!-- Hero Subtitle -->
+        <p class="hero-description">
+          Real-time Wi-Fi speed and sub-millisecond network telemetry docked seamlessly into your Windows taskbar.
+          Engineered with pure C# .NET for <strong>0% CPU overhead</strong>, <strong>zero focus stealing</strong>, and true standalone portability.
+        </p>
+
+        <!-- Hero CTA Buttons -->
+        <div class="hero-cta-group">
+          <a href="downloads/WaveGauge.exe" download="WaveGauge.exe" class="btn btn-primary btn-lg">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+            </svg>
+            <div class="btn-text-block">
+              <span class="btn-main-title">Download WaveGauge.exe</span>
+              <span class="btn-sub-caption">Standalone • v1.0.0 • 72 MB • Windows 11/10</span>
+            </div>
+          </a>
+
+          <a href="#simulator" class="btn btn-secondary btn-lg">
+            <span>Explore Taskbar Simulator</span>
+            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Specs Micro-Badges -->
+        <div class="hero-specs-row">
+          <div class="spec-pill">
+            <span class="spec-icon">✓</span>
+            <span>No Installation Required</span>
+          </div>
+          <div class="spec-pill">
+            <span class="spec-icon">✓</span>
+            <span>No .NET Runtime Setup</span>
+          </div>
+          <div class="spec-pill">
+            <span class="spec-icon">✓</span>
+            <span>WS_EX_NOACTIVATE Focus Safe</span>
+          </div>
+          <div class="spec-pill">
+            <span class="spec-icon">✓</span>
+            <span>Built by Agilitiq Ltd</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- HERO VISUAL: INTERACTIVE TASKBAR SIMULATOR -->
+      <div id="simulator" class="taskbar-hero-mockup">
+        <div class="mockup-frame">
+          <!-- Window Header / Desktop Canvas -->
+          <div class="mockup-screen-area">
+            <div class="mockup-ambient-desktop">
+              <div class="desktop-badge">
+                <span class="live-pulse"></span>
+                <span>LIVE TELEMETRY DEMO</span>
+              </div>
+              <div class="desktop-controls">
+                <button id="btnBurst" class="btn btn-outline btn-xs">⚡ Simulate Download Burst</button>
+                <button id="btnToggleMode" class="btn btn-outline btn-xs">↔ Switch 1-Line / 2-Line</button>
+                <button id="btnToggleUnits" class="btn btn-outline btn-xs">⚡ B/s vs. bps</button>
+              </div>
+            </div>
+
+            <!-- Floating Dashboard Window Preview (Draggable / Interactive) -->
+            <div class="floating-dashboard-preview" id="previewDashboard">
+              <div class="dash-preview-header">
+                <div class="dash-header-left">
+                  <img src="assets/mark_transparent.png" alt="WaveGauge" class="dash-mini-mark">
+                  <span class="dash-title">WaveGauge Dashboard</span>
+                  <span class="dash-ver">v1.0.0</span>
+                </div>
+                <div class="dash-status-badge">Connected • Agilitiq Ltd</div>
+              </div>
+
+              <!-- Mini Metric Cards -->
+              <div class="dash-mini-cards">
+                <div class="dash-card card-down">
+                  <div class="card-label">↓ DOWNLOAD SPEED</div>
+                  <div class="card-val" id="dashValDown">248.6 MB/s</div>
+                  <div class="card-sub" id="dashTotalDown">Total: 4.8 GB</div>
+                </div>
+                <div class="dash-card card-up">
+                  <div class="card-label">↑ UPLOAD SPEED</div>
+                  <div class="card-val" id="dashValUp">41.2 KB/s</div>
+                  <div class="card-sub" id="dashTotalUp">Total: 840 MB</div>
+                </div>
+                <div class="dash-card card-link">
+                  <div class="card-label">⚡ LINK SPEED</div>
+                  <div class="card-val">866.7 Mbps</div>
+                  <div class="card-sub">SSID: WaveGauge_5G</div>
+                </div>
+                <div class="dash-card card-ping">
+                  <div class="card-label">⏱ LATENCY / PING</div>
+                  <div class="card-val val-ping" id="dashValPing">14 ms</div>
+                  <div class="card-sub">Gateway: 192.168.1.1</div>
+                </div>
+              </div>
+
+              <!-- Live Rolling Canvas Graph -->
+              <div class="dash-graph-wrapper">
+                <div class="graph-legend">
+                  <span class="legend-title">REAL-TIME BANDWIDTH (LAST 60 SECONDS)</span>
+                  <div class="legend-items">
+                    <span class="legend-dot dot-cyan"></span><span class="legend-text">Download (↓)</span>
+                    <span class="legend-dot dot-amber"></span><span class="legend-text">Upload (↑)</span>
+                  </div>
+                </div>
+                <canvas id="liveHeroCanvas" width="680" height="110"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Windows 11 Taskbar Recreation -->
+          <div class="windows-taskbar">
+            <!-- Left: Windows Start & Pinned Apps -->
+            <div class="taskbar-left">
+              <div class="taskbar-icon win-start">
+                <svg viewBox="0 0 16 16" fill="#00A4EF" width="16" height="16">
+                  <path d="M0 2.25L6.5 1.35V7.65H0V2.25ZM0 8.35H6.5V14.65L0 13.75V8.35ZM7.25 1.25L16 0V7.65H7.25V1.25ZM7.25 8.35H16V16L7.25 14.75V8.35Z"/>
+                </svg>
+              </div>
+              <div class="taskbar-icon app-icon">📁</div>
+              <div class="taskbar-icon app-icon">🌐</div>
+              <div class="taskbar-icon app-icon">💻</div>
+            </div>
+
+            <!-- Right: WaveGauge Taskbar Dock + System Tray -->
+            <div class="taskbar-right">
+              <!-- WAVEGAUGE DOCKED WIDGET -->
+              <div class="wavegauge-docked-widget" id="dockedWidget" title="WaveGauge Taskbar Widget (Double click to open dashboard)">
+                <!-- Mini Mark -->
+                <div class="widget-icon">
+                  <img src="assets/mark_transparent.png" alt="WaveGauge Mark" width="18" height="13">
+                </div>
+
+                <!-- 2-Line View -->
+                <div class="widget-2line" id="widget2Line">
+                  <div class="widget-row down-row">
+                    <span class="speed-num font-mono" id="wgtDown">248.6 KB/s</span>
+                    <span class="speed-arrow text-cyan">↓</span>
+                  </div>
+                  <div class="widget-row up-row">
+                    <span class="speed-num font-mono" id="wgtUp">41.2 KB/s</span>
+                    <span class="speed-arrow text-amber">↑</span>
+                  </div>
+                </div>
+
+                <!-- 1-Line View (Hidden by default) -->
+                <div class="widget-1line hidden" id="widget1Line">
+                  <span class="speed-num font-mono" id="wgtDownSingle">248.6 KB/s</span>
+                  <span class="speed-arrow text-cyan">↓</span>
+                  <span class="widget-divider"></span>
+                  <span class="speed-num font-mono" id="wgtUpSingle">41.2 KB/s</span>
+                  <span class="speed-arrow text-amber">↑</span>
+                </div>
+              </div>
+
+              <!-- System Tray Notification Area -->
+              <div class="system-tray">
+                <span class="tray-icon font-mono">ENG</span>
+                <span class="tray-icon">📶</span>
+                <span class="tray-icon">🔊</span>
+                <span class="tray-icon">🔋</span>
+                <div class="tray-clock">
+                  <span class="clock-time font-mono" id="trayTime">12:00</span>
+                  <span class="clock-date font-mono" id="trayDate">10/18/2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFINITE TICKER / MARQUEE BANNER -->
+    <section class="marquee-section">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span>0% CPU OVERHEAD</span>
+          <span class="marquee-sep">•</span>
+          <span>&lt; 1MS KERNEL SAMPLING</span>
+          <span class="marquee-sep">•</span>
+          <span>WS_EX_NOACTIVATE FOCUS SAFE</span>
+          <span class="marquee-sep">•</span>
+          <span>STANDALONE SINGLE EXE (72MB)</span>
+          <span class="marquee-sep">•</span>
+          <span>WI-FI 6 / 6E / 7 READY</span>
+          <span class="marquee-sep">•</span>
+          <span>ENGINEERED BY AGILITIQ LTD</span>
+          <span class="marquee-sep">•</span>
+          <span>IBM PLEX MONO SPEED TELEMETRY</span>
+          <span class="marquee-sep">•</span>
+          <span>ZERO BACKGROUND PROCESS BLOAT</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+          <span>0% CPU OVERHEAD</span>
+          <span class="marquee-sep">•</span>
+          <span>&lt; 1MS KERNEL SAMPLING</span>
+          <span class="marquee-sep">•</span>
+          <span>WS_EX_NOACTIVATE FOCUS SAFE</span>
+          <span class="marquee-sep">•</span>
+          <span>STANDALONE SINGLE EXE (72MB)</span>
+          <span class="marquee-sep">•</span>
+          <span>WI-FI 6 / 6E / 7 READY</span>
+          <span class="marquee-sep">•</span>
+          <span>ENGINEERED BY AGILITIQ LTD</span>
+          <span class="marquee-sep">•</span>
+          <span>IBM PLEX MONO SPEED TELEMETRY</span>
+          <span class="marquee-sep">•</span>
+          <span>ZERO BACKGROUND PROCESS BLOAT</span>
+          <span class="marquee-sep">•</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACT NUMBERS & METRICS (Primora h-impact grid style) -->
+    <section id="impact" class="impact-section container">
+      <div class="section-header">
+        <div class="section-tag">MEASURABLE PERFORMANCE</div>
+        <h2 class="section-title">When telemetry becomes instant awareness.</h2>
+        <p class="section-desc">Traditional network utilities are bloated web wrappers. WaveGauge is pure Windows performance.</p>
+      </div>
+
+      <div class="impact-grid">
+        <!-- Stat 1 -->
+        <div class="impact-card">
+          <div class="stat-number font-mono text-cyan" data-target="0.0">0.0%</div>
+          <h3 class="stat-title">CPU Footprint</h3>
+          <p class="stat-description">
+            Zero impact on gaming FPS, 3D rendering, or heavy compiles. Polling is executed via kernel delta counters with zero background thread thrashing.
+          </p>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="impact-card">
+          <div class="stat-number font-mono text-amber" data-target="1">&lt; 1 ms</div>
+          <h3 class="stat-title">Sampling Precision</h3>
+          <p class="stat-description">
+            Calculated via Windows native NetworkInterface counters with high-resolution Stopwatch elapsed timestamps. Sub-millisecond byte accuracy.
+          </p>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="impact-card">
+          <div class="stat-number font-mono text-cyan" data-target="100">100%</div>
+          <h3 class="stat-title">Focus Safe</h3>
+          <p class="stat-description">
+            Built with Win32 WS_EX_NOACTIVATE and WS_EX_TOOLWINDOW. Dragging or clicking the widget never takes keyboard focus from your active apps.
+          </p>
+        </div>
+
+        <!-- Stat 4 -->
+        <div class="impact-card">
+          <div class="stat-number font-mono text-amber" data-target="72">72 MB</div>
+          <h3 class="stat-title">True Standalone</h3>
+          <p class="stat-description">
+            A single executable bundle with all runtimes and DirectX assets embedded. No installer, no registry pollution, no .NET install required.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDITORIAL MANIFESTO CALLOUT (Primora h-text_p style) -->
+    <section class="manifesto-section container">
+      <div class="manifesto-card">
+        <p class="manifesto-text">
+          “WaveGauge was engineered for developers, competitive gamers, and remote professionals who refuse to let stealth background updates dictate their latency. We stripped away heavy 300MB web wrappers to place microsecond network truth right where your eyes already rest: the Windows taskbar.”
+        </p>
+        <div class="manifesto-author">
+          <div class="author-avatar">AG</div>
+          <div class="author-info">
+            <span class="author-name">Agilitiq Ltd Engineering</span>
+            <span class="author-role">Systems &amp; Network Architecture Group</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE FEATURES GRID (Primora h-who interactive list) -->
+    <section id="features" class="features-section container">
+      <div class="section-header">
+        <div class="section-tag">ENGINEERED FOR PRECISION</div>
+        <h2 class="section-title">Built for those who demand total connection clarity.</h2>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-item">
+          <div class="feature-num font-mono">01</div>
+          <div class="feature-content">
+            <h3 class="feature-title">Unmask Stealth Bandwidth Drains</h3>
+            <p class="feature-desc">
+              Spot runaway cloud backups, game client patches, and background OS telemetry the second they initiate—before your meeting or stream drops frames.
+            </p>
+            <div class="feature-badge text-cyan">↓ Live Download Telemetry</div>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-item">
+          <div class="feature-num font-mono">02</div>
+          <div class="feature-content">
+            <h3 class="feature-title">Sub-Second Latency &amp; Jitter Probing</h3>
+            <p class="feature-desc">
+              Continuous asynchronous ICMP ping monitoring to internet gateways. Color-coded health indicators signal green/cyan (&lt;40ms) and burst amber on latency spikes.
+            </p>
+            <div class="feature-badge text-amber">⏱ Real-Time Ping Monitoring</div>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-item">
+          <div class="feature-num font-mono">03</div>
+          <div class="feature-content">
+            <h3 class="feature-title">Native Taskbar Docking &amp; Dragging</h3>
+            <p class="feature-desc">
+              Snaps seamlessly next to your system tray in Windows 11 and Windows 10. Left-click drag anywhere, or right-click to snap back and lock position.
+            </p>
+            <div class="feature-badge text-cyan">📍 Shell_TrayWnd Geometry</div>
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-item">
+          <div class="feature-num font-mono">04</div>
+          <div class="feature-content">
+            <h3 class="feature-title">Wi-Fi Telemetry &amp; Link Speed Readout</h3>
+            <p class="feature-desc">
+              Instant visibility into your active Wi-Fi network SSID, negotiated 802.11 link speed (e.g., 866.7 Mbps / 1.2 Gbps), IP address, and gateway router.
+            </p>
+            <div class="feature-badge text-amber">⚡ 802.11ax/ac Link Readout</div>
+          </div>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-item">
+          <div class="feature-num font-mono">05</div>
+          <div class="feature-content">
+            <h3 class="feature-title">Dual Display Modes &amp; Click-Through</h3>
+            <p class="feature-desc">
+              Switch between 2-line stacked metrics and 1-line horizontal slim view. Toggle Click-Through mode (WS_EX_TRANSPARENT) so clicks pass right through.
+            </p>
+            <div class="feature-badge text-cyan">👻 Click-Through Transparent</div>
+          </div>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-item">
+          <div class="feature-num font-mono">06</div>
+          <div class="feature-content">
+            <h3 class="feature-title">One-Click Auto-Start &amp; Zero Bloat</h3>
+            <p class="feature-desc">
+              Registered seamlessly via current-user registry run keys. No background services, no telemetry trackers, and no elevated administrator privileges needed.
+            </p>
+            <div class="feature-badge text-amber">🚀 Native Auto-Start</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TELEMETRY & LIVE GRAPH SIMULATION -->
+    <section id="telemetry" class="telemetry-section container">
+      <div class="section-header">
+        <div class="section-tag">INTERACTIVE GRAPH DASHBOARD</div>
+        <h2 class="section-title">Rolling bandwidth telemetry. At 60 frames per second.</h2>
+        <p class="section-desc">Experience the same smooth DirectX-accelerated rolling graph engine included in WaveGauge.</p>
+      </div>
+
+      <div class="interactive-graph-card">
+        <div class="graph-card-header">
+          <div class="graph-header-left">
+            <span class="live-dot"></span>
+            <span class="graph-name font-mono">TELEMETRY SIMULATOR — BANDWIDTH SPIKE PROBE</span>
+          </div>
+          <div class="graph-actions">
+            <button id="btnSimDownload" class="btn btn-outline btn-xs">Generate 500MB Download Spike</button>
+            <button id="btnSimUpload" class="btn btn-outline btn-xs">Generate Upload Stream</button>
+            <button id="btnResetGraph" class="btn btn-outline btn-xs">Reset Baseline</button>
+          </div>
+        </div>
+
+        <div class="interactive-canvas-container">
+          <canvas id="largeTelemetryCanvas" width="960" height="240"></canvas>
+        </div>
+
+        <div class="graph-footer-stats">
+          <div class="g-stat">
+            <span class="g-stat-label">CURRENT DOWNLOAD (↓)</span>
+            <span class="g-stat-val text-cyan font-mono" id="simValDown">248.6 MB/s</span>
+          </div>
+          <div class="g-stat">
+            <span class="g-stat-label">CURRENT UPLOAD (↑)</span>
+            <span class="g-stat-val text-amber font-mono" id="simValUp">41.2 KB/s</span>
+          </div>
+          <div class="g-stat">
+            <span class="g-stat-label">PACKET LATENCY</span>
+            <span class="g-stat-val font-mono" id="simValPing">12 ms</span>
+          </div>
+          <div class="g-stat">
+            <span class="g-stat-label">ACTIVE ADAPTER</span>
+            <span class="g-stat-val font-mono">Intel(R) Wireless-AC 9560</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE & DEEP DIVE (Primora 'The thinking behind the work' style) -->
+    <section id="architecture" class="arch-section container">
+      <div class="section-header">
+        <div class="section-tag">ENGINEERING NOTES</div>
+        <h2 class="section-title">The thinking behind WaveGauge.</h2>
+        <p class="section-desc">Why we made specific low-level architectural decisions to ensure microsecond responsiveness.</p>
+      </div>
+
+      <div class="arch-cards-grid">
+        <!-- Arch Card 1 -->
+        <article class="arch-card">
+          <div class="arch-meta">
+            <span class="arch-category">ARCHITECTURE</span>
+            <span class="arch-date">OCTOBER 2026</span>
+          </div>
+          <h3 class="arch-headline">Why Electron and Web-Wrappers Were Strictly Rejected</h3>
+          <p class="arch-excerpt">
+            Modern desktop utilities frequently ship bundled Chromium runtimes consuming 300MB+ RAM and 2-5% CPU just to display numbers. WaveGauge was built in native C# .NET WPF, compiling to an ultra-lean binary that uses ~30MB RAM and virtually 0% CPU.
+          </p>
+          <div class="arch-author">Agilitiq Ltd Core Systems</div>
+        </article>
+
+        <!-- Arch Card 2 -->
+        <article class="arch-card">
+          <div class="arch-meta">
+            <span class="arch-category">WIN32 INTERNALS</span>
+            <span class="arch-date">OCTOBER 2026</span>
+          </div>
+          <h3 class="arch-headline">Deep Dive into WS_EX_NOACTIVATE and Focus Guarding</h3>
+          <p class="arch-excerpt">
+            If you click a taskbar overlay while playing a competitive game, a standard window steals keyboard focus and minimizes your game. WaveGauge injects WS_EX_NOACTIVATE and WS_EX_TOOLWINDOW into the Win32 window styles, preventing focus theft completely.
+          </p>
+          <div class="arch-author">Agilitiq Ltd Core Systems</div>
+        </article>
+
+        <!-- Arch Card 3 -->
+        <article class="arch-card">
+          <div class="arch-meta">
+            <span class="arch-category">PACKAGING</span>
+            <span class="arch-date">OCTOBER 2026</span>
+          </div>
+          <h3 class="arch-headline">True Single-File Native Library Self-Extraction</h3>
+          <p class="arch-excerpt">
+            WPF applications typically require loose DirectX and presentation DLLs. By utilizing MSBuild single-file bundling with IncludeNativeLibrariesForSelfExtract and single-file compression, WaveGauge distributes as a 100% standalone executable.
+          </p>
+          <div class="arch-author">Agilitiq Ltd Core Systems</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- HIGH IMPACT CALL TO ACTION CARD (Primora cta_card style) -->
+    <section class="cta-section container">
+      <div class="cta-card">
+        <div class="cta-glow"></div>
+        <div class="cta-content">
+          <div class="cta-badge">GET STARTED IN SECONDS</div>
+          <h2 class="cta-title">Take control of your bandwidth today.</h2>
+          <p class="cta-subtitle">
+            Download WaveGauge v1.0.0. Free, open, and lightweight. Runs on Windows 11 and Windows 10 with zero dependencies.
+          </p>
+
+          <div class="cta-button-row">
+            <a href="downloads/WaveGauge.exe" download="WaveGauge.exe" class="btn btn-primary btn-xl">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+              </svg>
+              <div class="btn-text-block">
+                <span class="btn-main-title">Download WaveGauge.exe</span>
+                <span class="btn-sub-caption">Standalone Executable • v1.0.0 • 72 MB</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Feature checkmarks -->
+          <div class="cta-checklist">
+            <div class="check-item"><span class="check-mark">✓</span> No Installer Required</div>
+            <div class="check-item"><span class="check-mark">✓</span> 100% Free &amp; Lightweight</div>
+            <div class="check-item"><span class="check-mark">✓</span> Zero Background Bloat</div>
+            <div class="check-item"><span class="check-mark">✓</span> Engineered by Agilitiq Ltd</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MINIMALIST CLEAN FOOTER (Primora footer style) -->
+  <footer id="about" class="footer-wrapper">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-lockup anim-logo-wrap">
+            <div class="logo-mark anim-logo-star">
+              <svg viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="wifi-svg">
+                <path d="M4 11C15 0.5 33 0.5 44 11" stroke="#FFB020" stroke-width="4.2" stroke-linecap="round"/>
+                <path d="M11 18C18.5 10.5 29.5 10.5 37 18" stroke="#22D3EE" stroke-width="4" stroke-linecap="round"/>
+                <path d="M18 25C21.5 21.5 26.5 21.5 30 25" stroke="#22D3EE" stroke-width="3.8" stroke-linecap="round"/>
+                <circle cx="24" cy="31" r="3.2" fill="#22D3EE"/>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <span class="brand-wave">Wave</span><span class="brand-gauge">Gauge</span>
+            </div>
+          </div>
+          <p class="footer-tagline">“Know where every megabit goes.”</p>
+          <p class="footer-company">Engineered and maintained by <strong>Agilitiq Ltd</strong>.</p>
+        </div>
+
+        <div class="footer-nav-columns">
+          <div class="footer-col">
+            <h4 class="footer-col-title">Navigation</h4>
+            <ul class="footer-links">
+              <li><a href="#hero">Overview</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#telemetry">Telemetry</a></li>
+              <li><a href="#impact">Impact</a></li>
+              <li><a href="#architecture">Architecture</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Download &amp; Build</h4>
+            <ul class="footer-links">
+              <li><a href="downloads/WaveGauge.exe" download="WaveGauge.exe">WaveGauge.exe (v1.0.0)</a></li>
+              <li><a href="#simulator">Interactive Demo</a></li>
+              <li><a href="https://github.com" target="_blank" rel="noopener">GitHub Repository</a></li>
+              <li><a href="#architecture">Engineering Notes</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Company</h4>
+            <ul class="footer-links">
+              <li><a href="#about">Agilitiq Ltd</a></li>
+              <li><a href="#about">Privacy Policy</a></li>
+              <li><a href="#about">Terms &amp; Conditions</a></li>
+              <li><a href="mailto:support@agilitiq.com">Contact Support</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          © 2026 Agilitiq Ltd. All rights reserved. WaveGauge is a registered trademark of Agilitiq Ltd.
+        </p>
+        <div class="footer-legal">
+          <span>Windows 11 &amp; Windows 10 Native</span>
+          <span class="sep">•</span>
+          <span>Version 1.0.0.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
